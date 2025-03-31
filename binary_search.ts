@@ -16,25 +16,23 @@
  * - If `needle` is not found, return false.
  */
 
-const bin_search = (haystack: number[], needle: number): boolean => {
+export function bin_search(arr: number[], target: number): boolean {
   let lo = 0;
-  let hi = haystack.length; // Set high boundary to array length
+  let hi = arr.length - 1;
 
-  do {
-    const m = Math.floor(lo + (hi - lo) / 2); // Find the middle index
-    const v = haystack[m]; // Get the middle value
-
-    if (v === needle) {
-      return true; // Found the target value
-    } else if (v > needle) {
-      hi = m; // Search the left half
-    } else {
-      lo = m + 1; // Search the right half
+  while (lo <= hi) {
+    const mid = Math.floor(lo + (hi - lo) / 2);
+    if (arr[mid] === target) {
+      return true;
     }
-  } while (lo < hi);
-
-  return false; // Target value not found
-};
+    if (arr[mid] < target) {
+      lo = mid + 1;
+    } else {
+      hi = mid - 1;
+    }
+  }
+  return false;
+}
 
 // Example test case
 console.log(bin_search([1, 2, 3, 4, 5, 6, 7, 8], 9)); // Output: false

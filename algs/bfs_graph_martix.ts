@@ -1,6 +1,3 @@
-type CompleteGraphEdge = { from: number; to: number; weight: number };
-type GraphEdge = { to: number; weight: number };
-type WeightedAdjecencyList = GraphEdge[][];
 type WeightedAdjecencyMatrix = number[][]; // numbers mean weight
 
 // breadth first search means we will visit all the nodes at the same level before moving to the next level
